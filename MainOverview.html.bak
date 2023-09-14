@@ -65,7 +65,7 @@ $(window).load(function() {
 </style> </head>
   <body>
     <div id="templatemo_wrapper"> <br>
-      <div style="text-align: left;"><img src="file:///home/mohadese/Documents/RamezaniCodes/html/EvacuationBees/images/Screenshot%202023-09-01%20at%2012-43-10%20COLIBRI.png"
+      <div style="text-align: left;"><img src="images/Screenshot%202023-09-01%20at%2012-43-10%20COLIBRI.png"
           style="width: 980px; height: 85px;"><br>
       </div>
       <div id="templatemo_menu">
@@ -103,6 +103,7 @@ $(window).load(function() {
               alt="Image" style="width: 379px; height: 379px;"> </div>
           <div class="cleaner"></div>
         </div>
+        <hr style="width:20%" size="5px" color="#fadb07">
         <div class="col_w960">
           <div class="news_box">
             <h2>Geometry</h2>
@@ -110,8 +111,9 @@ $(window).load(function() {
             </p>
             <img src="images/mesh2.png" alt="Image" style="width: 330px; height: 330px;"><img
               src="images/mesh_refine.png" alt="Image" style="width: 321px; height: 321px;">
-             <p>Considering the part of the region in which Bees are accumulated,
-              we design a rectangular cube using <span style="color:green"> Blender</span>.<br />
+            <p>Considering the part of the region in which Bees are accumulated,
+              we design a rectangular cube using <span style="color:green">
+                Blender</span>.<br>
               In the main region, when the rectangular cubes join the top part
               of the region, we need to bisect a flux in two directions, which
               is possible mathematically. But it's not easy to implement it <span
@@ -122,6 +124,23 @@ $(window).load(function() {
           <div class="cleaner"></div>
         </div>
         <div class="cleaner"></div>
+        <hr style="width:20%" size="5px" color="#fadb07">
+        <div class="row">
+          <div class="column">
+            <h2>Define 3D example</h2>
+            <p>The initial density on the right side of rectangulare cube:</p>
+            <img src="images/spot.png" alt="" style="width: 612px; height: 69px;"></div>
+          <div class="column" style="text-align: right;"> <a href="#"><img src="images/initial.png"
+                alt="Image" style="width: 389px; height: 389px;"> </a></div>
+        </div>
+        <hr style="width:20%" size="5px" color="#fadb07">
+        <div class="row">
+          <h2>Extending code</h2>
+          <p>For FEM computation, we define a 2D finite element embedded in 3D
+            space which considers 3D positions when transforming to the
+            reference element. The following code can be used in both
+            DOLFIN/DOLFINX structures:</p>
+          <img src="images/code1.png" alt=""> </div>
       </div>
       <!-- end of main -->
       <div class="cleaner"></div>
@@ -133,6 +152,5 @@ $(window).load(function() {
       </div>
       <!-- end of templatemo_footer -->
       <!-- end of wrapper --> </div>
-    
   </body>
 </html>
