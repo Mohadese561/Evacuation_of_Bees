@@ -80,9 +80,9 @@ $(window).load(function() {
       <!-- end of templatemo_menu -->
       <div id="templatemo_main">
         <div class="col_w960">
-          <div style="text-align: left;"> <img src="images/Screenshot%202023-09-01%20at%2012-03-58%20COLIBRI.png"
+          <div style="text-align: left;"> <img src="images/Screenshot%202023-09-01%20at%2012-03-58%20COLIBRI.png"
               style="width: 513px; height: 292px;" /><br />
-                                      </div>
+                                      </div>
           <h1 style="text-align: center;">Macroscopic model for evacuation of
             bees</h1>
           <p>We investigate a <span style="color:red"> Hughes model </span>
@@ -97,8 +97,8 @@ $(window).load(function() {
             particles of flow. Considering this model, Bees tend to choose the
             shortest path to reach the outlet of beehive but it may be at a
             slower speed. To minimize the evacuation time and control the path
-            of Bees through the outlet,  we add a convection term  (additional
-            driving force)  to the nonlinear transport equation.</p>
+            of Bees through the outlet,  we add a convection term  (additional
+            driving force)  to the nonlinear transport equation.</p>
           <hr style="width:20%" size="5px" color="#fadb07" />
           <div class="row">
             <div class="column">
@@ -158,13 +158,15 @@ $(window).load(function() {
           <hr style="width:60%" size="5px" color="#fadb07" />
           <div class="row">
             <h3> Weak formulation </h3>
-            Define: <span class="math display"> \[ V_h = \{ v \in
-              L^{2}(\Omega): v|_{T} \in \mathcal{P}^{0}(T)\ \text{for all} \ T
-              \in \mathcal{T}_h\},\\ W_h = \{ v \in C(\bar{\Omega}): v|_{T} \in
-              \mathcal{P}^{1}(T)\ \text{for all} \ T \in \mathcal{T}_h\} \cap
-              H^1_{D}(\Omega), \] </span> Using the finite element method (FEM)
-            for space discretizations, we aim to find <span class="math display">
-              \( \rho\in C^1(0,t_n; V_h) \) </span> and <span class="math display">
+            Let <span class="math display"> \( H^1_{D}(\Omega) = \{v \in
+              H^1(\Omega): v|_{\Gamma_D} = 0 \} \) </span> and Define: <span class="math display">
+              \[ V_h = \{ v \in L^{2}(\Omega): v|_{T} \in \mathcal{P}^{0}(T)\
+              \text{for all} \ T \in \mathcal{T}_h\},\\ W_h = \{ v \in
+              C(\bar{\Omega}): v|_{T} \in \mathcal{P}^{1}(T)\ \text{for all} \ T
+              \in \mathcal{T}_h\} \cap H^1_{D}(\Omega), \] </span> Using the <span
+              style="color:blue">finite element method (FEM)</span> for space
+            discretizations, we aim to find <span class="math display"> \(
+              \rho\in C^1(0,t_n; V_h) \) </span> and <span class="math display">
               \( \phi \in W_h \) </span> such that <span class="math display">
               \[ \int_{\Omega} \partial_t \rho\ v \ dx + \int_{\Omega}(\rho \
               v^2_{\max}(\rho) \nabla \phi) \cdot \nabla v\ dx - \int_{\Gamma}
@@ -174,7 +176,33 @@ $(window).load(function() {
               \delta_1 \int_{\Omega} \nabla\phi \ \nabla w \ dx + \int_{\Omega}
               | \nabla \phi |^2 \ w \ dx = \int_{\Omega}
               \dfrac{1}{v_{\max}(\rho)^2 + \delta_2}\ w \ dx, \quad \forall w
-              \in W_h \] </span> </div>
+              \in W_h \] </span> It can be rewritten as <span class="math display">
+              \[ \int_{\Omega} \color{purple}{\partial_t \rho}\ v \ dx
+              +\varepsilon \Big(\int_{\Omega} \nabla \rho\cdot \nabla v \ dx -
+              \int_{\Omega} \color{red}{[[ \nabla \rho ]]}\cdot [\![v]\!]_n dx -
+              \int_{\Omega} \color{red}{[[ \nabla v ]]}\cdot [\![\rho]\!]_n dx +
+              \frac{1}{h} \int_{\Omega} \color{green}{[\![\rho]\!] [\![v]\!]}
+              dx\Big)+ \int_{\Gamma} \tilde{v}_{\text{max}}\ \rho\ v \ dx = -
+              \int_{\Omega} \color{blue}{(\bar{\rho}\ \beta)} \cdot
+              \color{green}{[\![v]\!]} \ dx, \quad \forall v \in V_h \] </span>
+            <ul>
+              <li> <span style="color:red"> Average of a function </span>
+                across a common facet of two cells: <span class="math display">
+                  \( [[v]] = \frac{1}{2} (v^{+} + v^{-}) \) </span></li>
+              <li> <span style="color:green"> Jump of a function </span>
+                across a common facet of two cells: <span class="math display">
+                  \( [\![v]\!] = v^{+} - v^{-},\) </span> </li>
+              <li> <span class="math display"> \( [\![v]\!]_{n} := v^{+}\cdot n^{+}+ v^{-} \cdot n^{-} \) </span> </li>
+              <li> Using <span style="color:blue"> Lax-Friedrich flux </span>
+                for the convective flux, <span class="math display"> \[
+                  (\bar{\rho}\ \beta) = [[\bar{\rho}\ \beta]]\cdot n -
+                  \dfrac{\eta}{2} [\![\bar{\rho} ]\!],\] </span> Finally, we
+                use the <span style="color:purple"> finite difference (FD)
+                  method </span> to discretize the temporal direction \[
+                \partial_t \rho \approx \dfrac{\rho^{n+1} - \rho^{n}}{\tau},
+                \qquad \tau = t_{n+1} - t_n.\]</li>
+            </ul>
+          </div>
           <hr style="width:60%" size="5px" color="#fadb07" />
           <div class="row">
             <h3> Adding a convection term </h3>
@@ -224,7 +252,7 @@ $(window).load(function() {
             </ul>
             <ul class="tmo_list">
               <li><a href="MainOverview.html">Define 3D example</a></li>
-              <li><a href="MainOverview.html">Extend the 2D  code ( by Max
+              <li><a href="MainOverview.html">Extend the 2D  code ( by Max
                   Winkler)</a></li>
             </ul>
           </div>
