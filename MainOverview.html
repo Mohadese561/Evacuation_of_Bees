@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title> Evacuation_of_Bees </title>
     <meta name="keywords" content="PDE, Bee, Eikonal, diffusion">
@@ -131,7 +130,6 @@ $(window).load(function() {
             <h2>Define 3D example</h2>
             <p>The initial density on the right side of rectangulare cube:</p>
             <img src="images/spot.png" alt="" style="width: 612px; height: 69px;">
-           
           </div>
           <div class="column" style="text-align: right;"> <a href="#"><img src="images/initial.png"
                 alt="Image" style="width: 389px; height: 389px;"> </a></div>
@@ -139,33 +137,39 @@ $(window).load(function() {
         <hr style="width:20%" size="5px" color="#fadb07">
         <div class="row">
           <h2>Extending code</h2>
-          <p>
-            We aim to control the direction of exiting such that the spot goes
+          <p> We aim to control the direction of exiting such that the spot goes
             to the top, then from the left side comes down and finally exits
             from the door. Therefore, we need to define the following terms for
-            velocity term:
-            <ul>
-              <li> <span class="math display"> \( right (z=1) \xrightarrow{\text{oppoite of x-axis}} 
-                top(right) \) </span>: for this purpose, we use <span class="math display"> \( -e^{-(z-1)^2} \) </span> on x-direction </li>
-              <li> <span class="math display"> \( top(right) \xrightarrow{\text{in the z-axis}} top(left): \) </span>
-                we use <span class="math display"> \( e^{-(x+5)^2} \) </span> on z-direction regarding this geometry (since x = -5 on top of this
-                geometry)</li>
-              <li> <span class="math display"> \( top(left) \xrightarrow{\text{in the x-axis}} left (z =
-                -1):\) </span> we use <span class="math display"> \( e^{-(z+1)^2} \) </span> on x-direction
-                regarding this geometry (since <span class="math display"> \( -1 \leq z \leq 1 \) </span>). It is
-                important to note here that we need this term until <span class="math display"> \( x &gt;
-                3.75 \) </span>, and after that spot should go through the door. </li>
-            </ul>
-            
-            For FEM computation, we define a 2D finite element embedded in 3D
-            space which considers 3D positions when transforming to the
-            reference element. The following code can be used in both
-            DOLFIN/DOLFINX structures:</p>
+            velocity term: </p>
+          <ul>
+            <li> <span style="color:purple"> right <span class="math display">
+                  \( (z=1) \xrightarrow{\text{oppoite of x-axis}} \) </span>top(right):
+                </span> for this purpose, we use <span class="math display"> \(
+                \color{purple}{ -e^{-(z-1)^2} }\) </span> on x-direction </li>
+            <li> <span style="color:blue"> top(right) <span class="math display">
+                  \( \xrightarrow{\text{in the z-axis}} \) </span> top(left): </span>
+              we use <span class="math display"> \( \color{blue}{e^{-(x+5)^2}
+                }\) </span> on z-direction regarding this geometry (since x =
+              -5 on top of this geometry)</li>
+            <li> <span style="color:green"> top(left) <span class="math display">
+                  \(\xrightarrow{\text{in the x-axis}} \text{left} (z = -1):\) </span>
+              </span> we use <span class="math display"> \(
+                \color{green}{e^{-(z+1)^2} }\) </span> on x-direction regarding
+              this geometry (since <span class="math display"> \( -1 \leq z
+                \leq 1 \) </span>). It is important to note here that we need
+              this term until <span class="math display"> \( x &gt; 3.75 \) </span>,
+              and after that spot should go through the door. </li>
+          </ul>
+          For FEM computation, we define a 2D finite element embedded in 3D
+          space which considers 3D positions when transforming to the reference
+          element. The following code can be used in both
+          <span style="color:red"> DOLFIN/DOLFINX </span> structures:
+          <p></p>
           <img src="images/code1.png" alt=""></div>
         <div class="row">We need some markers on lower dimensions which new
           surface measure for the Neumann boundary condition: <img src="images/code2.png"
             alt=""></div>
-        Other parts of the code will be uploade <a href="https://github.com/Mohadese561/Evacuation_of_Bees"
+        Other parts of the code will be uploaded <a href="https://github.com/Mohadese561/Evacuation_of_Bees"
           target="_blank">here.</a>
         <div class="row"><br>
         </div>
@@ -180,6 +184,5 @@ $(window).load(function() {
       </div>
       <!-- end of templatemo_footer -->
       <!-- end of wrapper --> </div>
-    
   </body>
 </html>
