@@ -2,6 +2,10 @@
 Credit: http://www.templatemo.com
 */
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 body {
 	margin: 0px;
@@ -12,7 +16,6 @@ body {
 	line-height: 1.7em; 
 	background-color: #fff;
 }
-
 #fadb07
 a, a:link, a:visited { color: #e98236; font-weight: bold; text-decoration: none; }
 a:hover { color: #f8d300; text-decoration: underline; } 
