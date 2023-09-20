@@ -12,10 +12,7 @@ body {
 	line-height: 1.7em; 
 	background-color: #fff;
 }
-div {
-  text-align: justify;
-  text-justify: inter-word;
-}
+
 #fadb07
 a, a:link, a:visited { color: #e98236; font-weight: bold; text-decoration: none; }
 a:hover { color: #f8d300; text-decoration: underline; } 
